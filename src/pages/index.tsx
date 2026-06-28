@@ -41,8 +41,8 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
         <title>{config.title}</title>
       </Head>
 
-      <div className="p-8 overflow-hidden h-full border-2 rounded border-light-yellow dark:border-dark-yellow">
-        <div ref={containerRef} className="overflow-y-auto h-full">
+      <div className="h-full min-w-0 overflow-hidden rounded border-2 border-light-yellow p-4 dark:border-dark-yellow sm:p-6 md:p-8">
+        <div ref={containerRef} className="h-full min-w-0 overflow-y-auto">
           <History history={history} />
 
           <Input

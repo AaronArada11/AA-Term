@@ -3,6 +3,9 @@
 import * as bin from './index';
 import config from '../../../config.json';
 
+const isConfigured = (value?: string): value is string =>
+  Boolean(value && value.trim());
+
 // Help
 export const help = async (args: string[]): Promise<string> => {
   const commands = Object.keys(bin).sort().join(', ');
@@ -39,16 +42,33 @@ More about me:
 };
 
 export const resume = async (args: string[]): Promise<string> => {
+  if (!isConfigured(config.resume_url)) {
+    return 'Resume link is not configured yet.';
+  }
+
   window.open(`${config.resume_url}`);
   return 'Opening resume...';
 };
 
 // Donate
 export const donate = async (args: string[]): Promise<string> => {
+  const links = [
+    ['paypal', config.donate_urls.paypal],
+    ['patreon', config.donate_urls.patreon],
+  ]
+    .filter(([, url]) => isConfigured(url))
+    .map(
+      ([label, url]) =>
+        `- <u><a class="text-light-blue dark:text-dark-blue underline" href="${url}" target="_blank">${label}</a></u>`,
+    );
+
+  if (!links.length) {
+    return 'Donation links are not configured yet.';
+  }
+
   return `thank you for your interest. 
 here are the ways you can support my work:
-- <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.donate_urls.paypal}" target="_blank">paypal</a></u>
-- <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.donate_urls.patreon}" target="_blank">patreon</a></u>
+${links.join('\n')}
 `;
 };
 
@@ -65,6 +85,10 @@ export const github = async (args: string[]): Promise<string> => {
 };
 
 export const linkedin = async (args: string[]): Promise<string> => {
+  if (!isConfigured(config.social.linkedin)) {
+    return 'LinkedIn link is not configured yet.';
+  }
+
   window.open(`https://www.linkedin.com/in/${config.social.linkedin}/`);
 
   return 'Opening linkedin...';
@@ -140,16 +164,14 @@ export const sudo = async (args?: string[]): Promise<string> => {
 
 // Banner
 export const banner = (args?: string[]): string => {
-  return `
-█████        ███                       ███████████                                   
-░░███        ░░░                       ░█░░░███░░░█                                   
- ░███        ████  █████ █████  ██████ ░   ░███  ░   ██████  ████████  █████████████  
- ░███       ░░███ ░░███ ░░███  ███░░███    ░███     ███░░███░░███░░███░░███░░███░░███ 
- ░███        ░███  ░███  ░███ ░███████     ░███    ░███████  ░███ ░░░  ░███ ░███ ░███ 
- ░███      █ ░███  ░░███ ███  ░███░░░      ░███    ░███░░░   ░███      ░███ ░███ ░███ 
- ███████████ █████  ░░█████   ░░██████     █████   ░░██████  █████     █████░███ █████
-░░░░░░░░░░░ ░░░░░    ░░░░░     ░░░░░░     ░░░░░     ░░░░░░  ░░░░░     ░░░░░ ░░░ ░░░░░ 
-
+  return `<span class="terminal-banner">
+ █████╗  █████╗ ██████╗  ██████╗ ███╗   ██╗     █████╗ ██████╗  █████╗ ██████╗  █████╗ 
+██╔══██╗██╔══██╗██╔══██╗██╔═══██╗████╗  ██║    ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗
+███████║███████║██████╔╝██║   ██║██╔██╗ ██║    ███████║██████╔╝███████║██║  ██║███████║
+██╔══██║██╔══██║██╔══██╗██║   ██║██║╚██╗██║    ██╔══██║██╔══██╗██╔══██║██║  ██║██╔══██║
+██║  ██║██║  ██║██║  ██║╚██████╔╝██║ ╚████║    ██║  ██║██║  ██║██║  ██║██████╔╝██║  ██║
+╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝    ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝
+</span>
 Type 'help' to see the list of available commands.
 Type 'sumfetch' to display summary.
 Type 'repo' or click <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.repo}" target="_blank">here</a></u> for the Github repository.

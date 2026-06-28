@@ -18,7 +18,32 @@ body > div:first-child,
 div#__next,
 div#__next > div {
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
+}
+
+body {
+  min-width: 0;
+}
+
+.terminal-output {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.terminal-banner {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+  font-size: clamp(0.4rem, 1.25vw, 1rem);
+  line-height: 1.05;
+  white-space: pre;
+  overflow-wrap: normal;
+  -webkit-overflow-scrolling: touch;
+}
+
+.terminal-banner::-webkit-scrollbar {
+  height: 6px;
 }
 
 ::-webkit-scrollbar {

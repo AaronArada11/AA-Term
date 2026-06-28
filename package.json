@@ -1,11 +1,11 @@
 {
-  "name": "liveterm",
+  "name": "aa-term",
   "version": "0.1.0",
   "license": "MIT",
   "author": {
-    "name": "Vincent Wu",
-    "url": "https://cveinnt.com",
-    "email": "contact@wensenwu.com"
+    "name": "Aaron Arada",
+    "url": "https://github.com/AaronArada11",
+    "email": "aaronarada011@gmail.com"
   },
   "scripts": {
     "dev": "next dev",

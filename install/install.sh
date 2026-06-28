@@ -1,15 +1,15 @@
 #!/bin/sh
-# This script installs LiveTerm.
+# This script installs AA-Term.
 #
-# Found a bug? Report it here: https://github.com/Cveinnt/LiveTerm/issues
+# Found a bug? Report it here: https://github.com/AaronArada11/AA-Term/issues
 
 set -e -u
 
-eval "git clone 'https://github.com/Cveinnt/LiveTerm.git'"
+eval "git clone 'https://github.com/AaronArada11/AA-Term.git'"
 
-cd LiveTerm
+cd AA-Term
 
-echo "LiveTerm cloned! Installing dependencies..."
+echo "AA-Term cloned! Installing dependencies..."
 
 if command -v yarn >/dev/null 2>&1 ; then
   yarn install
@@ -44,10 +44,10 @@ cat <<-'EOM'
 ░░░░░░░░░░░ ░░░░░    ░░░░░     ░░░░░░     ░░░░░     ░░░░░░  ░░░░░     ░░░░░ ░░░ ░░░░░ 
                                                                                 
 
-LiveTerm has been downloaded to the current directory.
+AA-Term has been downloaded to the current directory.
 You can start developing it with:
 
-cd LiveTerm && yarn dev
+cd AA-Term && yarn dev
 
 This will open a local port at http://localhost:3000, 
 where you can preview your website. To apply changes, edit:

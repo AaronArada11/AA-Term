@@ -79,7 +79,7 @@ export const Input = ({
   };
 
   return (
-    <div className="flex flex-row space-x-2">
+    <div className="flex min-w-0 flex-row space-x-2">
       <label htmlFor="prompt" className="flex-shrink">
         <Ps1 />
       </label>
@@ -88,7 +88,7 @@ export const Input = ({
         ref={inputRef}
         id="prompt"
         type="text"
-        className={`bg-light-background dark:bg-dark-background focus:outline-none flex-grow ${
+        className={`min-w-0 flex-grow bg-light-background focus:outline-none dark:bg-dark-background ${
           commandExists(command) || command === ''
             ? 'text-dark-green'
             : 'text-dark-red'
