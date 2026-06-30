@@ -22,13 +22,9 @@ const sumfetch = async (args: string[]): Promise<string> => {
         `linkedin.com/in/${config.social.linkedin}`,
       )
     : 'LinkedIn not configured';
-  const paypalLink = isConfigured(config.donate_urls.paypal)
-    ? link(config.donate_urls.paypal, config.donate_urls.paypal)
-    : 'PayPal not configured';
-  const patreonLink = isConfigured(config.donate_urls.patreon)
-    ? link(config.donate_urls.patreon, config.donate_urls.patreon)
-    : 'Patreon not configured';
-
+  const Kumpas = link(`https://kumpas-translator.vercel.app/`, 'KUMPAS');
+  const MirrorMentor = link(`https://github.com/Goodness-Gracious-GG/demo`, 'MirrorMentor');
+  const AaronIntelligence = link(`https://aaron-arada.vercel.app/`, 'Aaron Intelligence');
   if (config.ascii === 'cveinnt') {
     return `                                                  
              @@@@@@@@@@@@@                   sumfetch: summary display
@@ -43,10 +39,10 @@ const sumfetch = async (args: string[]): Promise<string> => {
  @@           @@          @@        @@       ${emailLink}
   @@           @@        @@        @@        ${githubLink}
    @@             @@@@@@          @@         ${linkedinLink}
-     @@@                        @@@         -----------
-        @@@                  @@@ @@          DONATE 
-         @|  @@@@@@@@@@@@@@@@   @@           ${paypalLink}
-         @|                      @@          ${patreonLink}
+     @@@                        @@@          PROJECTS
+        @@@                  @@@ @@          
+         @|  @@@@@@@@@@@@@@@@   @@           
+         @|                      @@          
 
 `;
   } else {
@@ -63,9 +59,10 @@ const sumfetch = async (args: string[]): Promise<string> => {
 ▐▓▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▓        ${githubLink}
    ▓▓      ▐▓▓    ▓▓    ▐▓▓     ▓▓           ${linkedinLink}
     ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓           -----------
-      ▓▓▓   ▐▓▓   ▓▓   ▓▓▓   ▓▓▀             DONATE 
-        ▀▓▓▄▄ ▀▓▓▄▓▓▄▓▓▓▄▄▓▓▀                ${paypalLink}
-            ▀▓▓▓▓▓▓▓▓▓▓▓▀▀                   ${patreonLink}
+      ▓▓▓   ▐▓▓   ▓▓   ▓▓▓   ▓▓▀             PROJECTS
+        ▀▓▓▄▄ ▀▓▓▄▓▓▄▓▓▓▄▄▓▓▀               ${Kumpas}
+            ▀▓▓▓▓▓▓▓▓▓▓▓▀▀                  ${AaronIntelligence}
+                                            ${MirrorMentor}
 
 `;
   }
